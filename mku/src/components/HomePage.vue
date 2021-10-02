@@ -1,16 +1,25 @@
 <template>
-  <div class="hello">
-    <h1>HOME</h1>
+  <div>
+    <Header />
+    <sub-header />
+    <home />
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from '../components/Header.vue'
+import SubHeader from '../components/SubHeader.vue'
+import Home from '../components/Home.vue'
+import Footer from '../components/Footer.vue'
+
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  components: {
+    Header,
+    SubHeader,
+    Home,
+    Footer
+  }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
