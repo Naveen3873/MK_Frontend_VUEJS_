@@ -1,8 +1,8 @@
 /* eslint-disable */
 import axios from 'axios';
 export default{
-    putCollege: function(college){
-        var clginsert = axios.create({
+    putStudent: function(student){
+        var stdinsert = axios.create({
             baseURL: "http://localhost:9090",
         });
         let config = {
@@ -11,8 +11,8 @@ export default{
             }
         };
         return new Promise((resolve, reject) => {
-            clginsert
-                .post("/college/insert", college, config)
+            stdinsert
+                .post("/student/insert", student, config)
                 .then(response => {
                     resolve(response);
                 })

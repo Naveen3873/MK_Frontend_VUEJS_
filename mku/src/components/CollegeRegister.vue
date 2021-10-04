@@ -1,43 +1,43 @@
 <template>
 <div>
     <div class="form-row">
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>College Name</label>
-            <b-form-input type="text" class="form-control" v-model="college.collegeName"></b-form-input>
+            <b-form-input type="text" class="form-control" v-model.trim="college.collegeName" placeholder="Enter your college name"></b-form-input>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>User Name</label>
-            <b-form-input type="text" class="form-control" v-model="college.userName"></b-form-input>
+            <b-form-input type="text" class="form-control" v-model.trim="college.userName" placeholder="Enter your username"></b-form-input>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Email</label>
-            <b-form-input type="email" class="form-control" v-model="college.email"></b-form-input>
+            <b-form-input type="email" class="form-control" v-model.trim="college.email" placeholder="Enter your email"></b-form-input>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Phone Number</label>
-            <b-form-input type="number" class="form-control" v-model="college.phoneNumber"></b-form-input>
+            <b-form-input type="number" class="form-control" v-model.trim="college.phoneNumber" placeholder="Enter your phone number"></b-form-input>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>Password</label>
-            <b-form-input type="password" class="form-control" v-model="college.password"></b-form-input>
+            <b-form-input type="password" class="form-control" v-model.trim="college.password" placeholder="Enter your password"></b-form-input>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label>College Address</label>
                 <b-form-textarea
                     id="textarea"
                     v-model="college.collegeAddress"
-                    placeholder="Enter your address..."
+                    placeholder="Enter your address"
                     rows="3"
                     max-rows="6">
                 </b-form-textarea>
         </div>
 
-        <button class="btn btn-primary mt-3" @click="putCollege()">submit</button>
+        <button class="btn btn-primary mt-3" @click="insertCollege()">submit</button>
     </div>
 </div>
 </template>
@@ -53,7 +53,7 @@ div .form-group {
 
 <script>
 /* eslint-disable */
-import axios from 'axios';
+import CollegeService from '../service/CollegeService.js'
 
 export default {
     name: 'collegeRegister',
@@ -71,39 +71,24 @@ export default {
         }
     },
     methods: {
-                putCollege: function(){
-                   var authAxios = axios.create({
-                    baseURL: "http://localhost:8080",
+        insertCollege: function(){
+            return new Promise((resolve, reject) => {
+                CollegeService.putCollege(this.college)
+                .then((response) => {
+                    this.student = response.data;
+                    alert(response.data);
+                    this.college.collegeName = "";
+                    this.college.userName = "";
+                    this.college.email = "";
+                    this.college.phoneNumber = "";
+                    this.college.password = "";
+                    this.college.collegeAddress = "";
+                    resolve(response);
+                }).catch((err) => {
+                    reject(err);
                 });
-                let config = {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                };
-                return new Promise((resolve, reject) => {
-                    authAxios
-                        .post("/college/insert",this.college, config)
-                        .then(response => {
-                             alert("insert succes");
-                                resolve(response);
-                        })
-                        .catch(err => {
-                            reject(err);
-                        });
-                });
-                },
-
-        // putCollege: function(){
-        //     return new Promise((resolve, reject) => {
-        //         CollegeService.putCollege(this.college)
-        //         .then((response) => {
-        //             alert("insert successfully");
-        //             resolve(response);
-        //         }).catch((err) => {
-        //             reject(err);
-        //         });
-        //     });
-        // }
+            });
+        }
     }
 }
 </script>
