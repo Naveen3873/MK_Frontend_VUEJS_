@@ -62,38 +62,6 @@ export default {
   methods: {
     submitForm() {
 
-      if(this.selected == 1) {
-
-        // if(this.$v.$invalid){
-        //   this.submitstatus = "FAIL"
-        //   return;
-        // }
-        //   this.submitstatus = "SUCCESS"
-        //   alert("Submit successfully");
-        //   window.location.replace("/admin");
-      }
-
-      else if(this.selected == 2) {
-        if(this.$v.$invalid){
-          this.submitstatus = "FAIL"
-          return;
-        }
-          this.submitstatus = "SUCCESS"
-          alert("Submit successfully");
-          window.location.replace("/college");
-      }
-      else if(this.selected == 3) {
-        if(this.$v.$invalid){
-          this.submitstatus = "FAIL"
-          return;
-        }
-          this.submitstatus = "SUCCESS"
-          alert("Submit successfully");
-          window.location.replace("/student");
-      }
-      else {
-            alert("invalid username and password");
-      }
     }
   }
 }

@@ -20,5 +20,21 @@ export default{
                     reject(err);
                 });
         });
+    },
+    getAllColleges: function(){
+        var allclg = axios.create({
+            baseURL: "http://localhost:9090",
+        });
+        return new Promise((resolve, reject) => {
+            allclg({
+                method: 'get',
+                url: '/college/getAll',
+            }).then((response) => {
+                resolve(response);
+            }).catch((err) => {
+                reject(err);
+            });
+        });
+
     }
 }
