@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div>
+  <!-- <div>
     <b-form-radio-group v-model="selected">
       <b-container>
         <b-row>
@@ -16,22 +16,22 @@
         </b-row>
       </b-container>
     </b-form-radio-group>
-  </div>
+  </div> -->
   <div class="form-row">
     <div class="form-group my-2">
       <label>User Name</label>
-      <b-form-input type="text" class="form-control" v-model.trim="userName" placeholder="Enter your username"></b-form-input>
+      <b-form-input type="text" class="form-control" v-model.trim="cl.userName" placeholder="Enter your username"></b-form-input>
     </div>
 
     <div class="form-group my-3">
       <label>Password</label>
-      <b-form-input type="password" class="form-control" v-model.trim="password" placeholder="Enter your username"></b-form-input>
+      <b-form-input type="password" class="form-control" v-model.trim="cl.password" placeholder="Enter your username"></b-form-input>
     </div>
-    <div>
+    <!-- <div>
       <p class="mt-2 float-end"><a href="#">forgot possword?</a></p>
-    </div>
+    </div> -->
     <div>
-      <button type="submit" class="btn btn-primary mt-3 px-5 block">Login</button>
+      <button type="submit" @click="findByUsernameAndPassword()" class="btn btn-primary mt-3 px-5 block">Login</button>
     </div>
   </div>
 </div>
@@ -40,15 +40,17 @@
 <script>
 /* eslint-disable */
 import { required } from "vuelidate/lib/validators";
+import axios from 'axios';
 
 export default {
   name: 'login',
   data () {
     return {
-      userName: '',
-      password: '',
-      selected: '1',
-      submitstatus: null
+      cl:{
+        userName: '',
+        password: '',
+        // selected: '1',
+      }
     }
   },
   validations: {
@@ -60,8 +62,26 @@ export default {
     }
   },
   methods: {
-    submitForm() {
-
+    findByUsernameAndPassword() {
+      var axi = axios.create({
+      baseURL: `http://localhost:9090/`
+      });
+      let config = {
+          headers: {
+              "Content-Type": "application/json"
+          }
+      };
+      return new Promise((resolve, reject) => {
+          axi
+          .post("/college/user", this.cl, config)
+          .then((response) => {
+              alert("login successfully");
+              resolve(response);
+          }).catch((err) => {
+              alert("login failed");
+              reject(err);
+          });
+      });
     }
   }
 }

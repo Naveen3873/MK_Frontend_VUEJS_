@@ -35,5 +35,20 @@ export default{
                 reject(err);
             });
         });
+    },
+    deleteStudent: function(id){
+        var delstu = axios.create({
+            baseURL: "http://localhost:9090",
+        });
+        return new Promise((resolve, reject) => {
+            delstu({
+                method: 'get',
+                url: '/student/delete/' + id,
+            }).then((response) => {
+                resolve(response);
+            }).catch((err) => {
+                reject(err);
+            });
+        });
     }
 }

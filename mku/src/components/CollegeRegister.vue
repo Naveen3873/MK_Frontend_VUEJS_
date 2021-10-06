@@ -37,7 +37,7 @@
                 </b-form-textarea>
         </div>
 
-        <button class="btn btn-primary mt-3" @click="insertCollege()">submit</button>
+        <b-button variant="primary" @click="insertCollege()" class="float-end mt-3">submit</b-button>
     </div>
 </div>
 </template>

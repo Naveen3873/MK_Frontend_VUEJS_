@@ -15,7 +15,7 @@
                         <th>Password</th>
                         <th>Student Address</th>
                         <th>College</th>
-                        <th>Auction</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,9 @@
                         <td>{{ s.studentAddress }}</td>
                         <td>{{ s.selectedCollege }}</td>
                         <td>
-
+                            <span><b-icon-pencil-square></b-icon-pencil-square></span>
+                            <span>|</span>
+                            <span><b-icon icon="trash-fill" aria-hidden="true" @click="deleteStudent(s.id)"></b-icon></span>
                         </td>
                     </tr>
                 </tbody>
@@ -72,6 +74,18 @@ export default {
                 });
             });
         },
+        deleteStudent: function(id){
+            return new Promise((resolve, reject) => {
+                StudentService.deleteStudent(id)
+                .then((response) => {
+                    alert(id+" deleted")
+                    this.getAllStudents();
+                    resolve(response);
+                }).catch((err) => {
+                    reject(err);
+                });
+            });
+        }
     }
 }
 </script>

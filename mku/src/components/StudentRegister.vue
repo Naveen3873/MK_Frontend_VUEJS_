@@ -44,10 +44,10 @@
 
       <div class="form-group">
          <label>College</label><br>
-            <b-form-select v-model="student.selectedCollege" :options="student.options"></b-form-select>
+            <b-form-select class="form-control" v-model="student.selectedCollege" :options="student.options"></b-form-select>
       </div>
       <div>
-         <button type="submit" class="btn btn-primary mt-3" @click="insertStudent()">Submit</button>
+         <b-button type="submit" variant="primary" @click="insertStudent()" class="float-end mt-3">Submit</b-button>
       </div>
    </div>
 </div>
