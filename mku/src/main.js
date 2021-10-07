@@ -1,3 +1,4 @@
+/* eslint-disable */
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -21,7 +22,10 @@ Vue.use(BootstrapVueIcons)
 Vue.use(ModalPlugin)
 Vue.use(VueAxios, axios)
 
-/* eslint-disable no-new */
+var VueCookie = require('vue-cookie');
+// Tell Vue to use the plugin
+Vue.use(VueCookie);
+
 new Vue({
   el: '#app',
   router,

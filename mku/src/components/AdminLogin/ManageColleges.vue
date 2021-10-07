@@ -1,6 +1,7 @@
 <template>
 <div>
 <admin-header />
+<sub-header />
     <b-container>
         <p class="display-4 text-primary mt-5 mx-5">MANAGE COLLEGES</p>
         <div class="table-responsive">
@@ -19,14 +20,15 @@
                 </thead>
                 <tbody>
                     <tr v-for="c in colleges" :key="c.id">
-                        <td>{{c.id}}</td>
-                        <td>{{c.collegeName}}</td>
-                        <td>{{c.userName}}</td>
-                        <td>{{c.email}}</td>
-                        <td>{{c.phoneNumber}}</td>
-                        <td>{{c.password}}</td>
-                        <td>{{c.collegeAddress}}</td>
+                        <td>{{ c.id }}</td>
+                        <td>{{ c.collegeName }}</td>
+                        <td>{{ c.userName }}</td>
+                        <td>{{ c.email }}</td>
+                        <td>{{ c.phoneNumber }}</td>
+                        <td>{{ c.password }}</td>
+                        <td>{{ c.collegeAddress }}</td>
                         <td>
+                            <!-- College edit and update start-->
                             <b-icon @click="getCollege(c.id)" icon="pencil-fill" v-b-modal.model-5 aria-hidden="true"></b-icon>
                                 <b-modal id="model-5" title="College Edit" hide-footer>
                                     <div>
@@ -66,10 +68,11 @@
                                                         max-rows="6">
                                                     </b-form-textarea>
                                             </div>
-                                            <b-button variant="primary" @click="updateCollege()" class="float-end mt-3">update</b-button>
+                                            <b-button type="submit" variant="primary" @click="updateCollege()" class="float-end mt-3">update</b-button>
                                         </div>
                                     </div>
                                 </b-modal>
+                            <!-- College edit and update end-->
                             <span>|</span>
                             <span><b-icon icon="trash-fill" @click="deleteCollege(id)" aria-hidden="true"></b-icon></span>
                         </td>
@@ -87,12 +90,14 @@
 import CollegeService from '../../service/CollegeService'
 import AdminHeader from './AdminHeader.vue'
 import Footer from '../Footer.vue'
+import SubHeader from '../SubHeader.vue'
 
 export default {
     name: 'ManageColleges',
     components: {
         AdminHeader,
-        Footer
+        Footer,
+        SubHeader
     },
     data() {
         return{
@@ -151,6 +156,15 @@ export default {
             return new Promise((resolve, reject) => {
                 CollegeService.updateCollege(this.college)
                 .then(response => {
+                    alert(response.data);
+                    this.getAllColleges();
+                    this.college.id = '',
+                    this.college.collegeName =  '',
+                    this.college.userName =  '',
+                    this.college.email = '',
+                    this.college.phoneNumber = '',
+                    this.college.password = '',
+                    this.college.collegeAddress = ''
                     resolve(response);
                 })
                 .catch(err => {

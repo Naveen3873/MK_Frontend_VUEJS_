@@ -18,7 +18,7 @@
                         <b-dropdown-item><router-link to="/admin/approveinstitute">Approve Colleges</router-link></b-dropdown-item>
                         <b-dropdown-item><router-link to="/admin/managecolleges">Manage Colleges</router-link></b-dropdown-item>
                         <b-dropdown-item><router-link to="/admin/viewstudents">View Students</router-link></b-dropdown-item>
-                        <b-dropdown-item href="#">View Complaints</b-dropdown-item>
+                        <b-dropdown-item href="#" disabled>View Complaints</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item id="logout"><router-link to="/">Logout</router-link></b-dropdown-item>
                     </b-dropdown>

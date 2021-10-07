@@ -75,7 +75,6 @@ export default {
             return new Promise((resolve, reject) => {
                 CollegeService.putCollege(this.college)
                 .then((response) => {
-                    this.student = response.data;
                     alert(response.data);
                     this.college.collegeName = "";
                     this.college.userName = "";

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <!-- <div>
+  <div>
     <b-form-radio-group v-model="selected">
       <b-container>
         <b-row>
@@ -16,16 +16,16 @@
         </b-row>
       </b-container>
     </b-form-radio-group>
-  </div> -->
+  </div>
   <div class="form-row">
     <div class="form-group my-2">
       <label>User Name</label>
-      <b-form-input type="text" class="form-control" v-model.trim="cl.userName" placeholder="Enter your username"></b-form-input>
+      <b-form-input type="text" class="form-control" v-model.trim="login.userName" placeholder="Enter your username"></b-form-input>
     </div>
 
     <div class="form-group my-3">
       <label>Password</label>
-      <b-form-input type="password" class="form-control" v-model.trim="cl.password" placeholder="Enter your username"></b-form-input>
+      <b-form-input type="password" class="form-control" v-model.trim="login.password" placeholder="Enter your username"></b-form-input>
     </div>
     <!-- <div>
       <p class="mt-2 float-end"><a href="#">forgot possword?</a></p>
@@ -46,15 +46,15 @@ export default {
   name: 'login',
   data () {
     return {
-      cl:{
+      login:{
         userName: '',
-        password: '',
-        // selected: '1',
-      }
+        password: ''
+      },
+      selected: '1'
     }
   },
   validations: {
-    userId: {
+    userName: {
       required
     },
     password: {
@@ -71,17 +71,56 @@ export default {
               "Content-Type": "application/json"
           }
       };
-      return new Promise((resolve, reject) => {
-          axi
-          .post("/college/user", this.cl, config)
-          .then((response) => {
-              alert("login successfully");
-              resolve(response);
-          }).catch((err) => {
-              alert("login failed");
-              reject(err);
-          });
-      });
+      if(this.selected == 1){
+        return new Promise((resolve, reject) => {
+            axi
+            .post("/admin/user", this.login, config)
+            .then((response) => {
+                alert("login successfully");
+                this.login.userName = "";
+                this.login.password = "";
+                this.$router.push('admin')
+                // window.location.replace("/admin");
+                resolve(response);
+            }).catch((err) => {
+                alert("login failed");
+                reject(err);
+            });
+        });
+      }
+      if(this.selected == 2){
+        return new Promise((resolve, reject) => {
+            axi
+            .post("/college/user", this.login, config)
+            .then((response) => {
+                alert("login successfully");
+                this.login.userName = "";
+                this.login.password = "";
+                window.location.replace("/college");
+                resolve(response);
+            }).catch((err) => {
+                alert("login failed");
+                reject(err);
+            });
+        });
+      }
+      if(this.selected == 3){
+        return new Promise((resolve, reject) => {
+            axi
+            .post("/student/user", this.login, config)
+            .then((response) => {
+                alert("login successfully");
+                this.login.userName = "";
+                this.login.password = "";
+                window.location.replace("/student");
+                resolve(response);
+            }).catch((err) => {
+                alert("login failed");
+                reject(err);
+            });
+        });
+      }
+
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
 <div>
 <admin-header />
+<sub-header />
     <b-container>
         <p class="display-4 text-primary mt-5 mx-5">APPROVE INSTITUTE</p>
         <div class="table-responsive">
@@ -39,11 +40,13 @@
 import CollegeService from '../../service/CollegeService'
 import AdminHeader from './AdminHeader.vue'
 import Footer from '../Footer.vue'
+import SubHeader from '../SubHeader.vue'
 export default {
     name: 'ApproveInstitute',
     components: {
         AdminHeader,
-        Footer
+        Footer,
+        SubHeader
     },
     data() {
         return{
