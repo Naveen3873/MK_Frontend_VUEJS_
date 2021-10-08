@@ -1,6 +1,6 @@
 /*eslint-disable */
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import HomePage from '@/components/HomePage'
 
 import Admin from '../components/AdminLogin/Admin.vue'
@@ -8,10 +8,12 @@ import ApproveInstitue from '../components/AdminLogin/ApproveInstitute.vue'
 import ManageColleges from '../components/AdminLogin/ManageColleges.vue'
 import ViewStudents from '../components/AdminLogin/ViewStudents.vue'
 
-Vue.use(Router)
+import College from '../components/CollegeLogin/College'
+import FacultyManagement from '../components/CollegeLogin/FacultyManagement'
 
-export default new Router({
-  routes: [
+Vue.use(VueRouter)
+
+const routes = [
     {
       path: '/',
       name: 'HomePage',
@@ -20,7 +22,8 @@ export default new Router({
     {
       path: '/admin',
       name: 'Admin',
-      component: Admin
+      component: Admin,
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/approveinstitute',
@@ -36,7 +39,38 @@ export default new Router({
       path: '/admin/viewstudents',
       name: 'ViewStudents',
       component: ViewStudents
+    },
+    {
+      path: '/college',
+      name: 'College',
+      component: College,
+    },
+    {
+      path: '/college/facultymanagement',
+      name: 'FacultyManagement',
+      component: FacultyManagement
     }
-  ],
-  mode: 'history'
+];
+
+const router = new VueRouter({
+  routes,
+  mode: 'history',
+  linkActiveClass: 'active',
+});
+router.beforeEach((to,from,next)=>{
+      if(to.meta.requiresAuth){
+              if(localStorage.getItem('status')=='verified')
+              {
+                     next();
+              }
+              else{
+                      router.push({name:'HomePage'})
+              }
+      }
+      else{
+              next();
+      }
+
 })
+
+export default router;
