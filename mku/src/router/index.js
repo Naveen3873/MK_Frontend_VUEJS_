@@ -25,10 +25,6 @@ export default new Router({
       path: '/admin',
       name: 'Admin',
       component: Admin,
-      meta: {
-        requiresAuth: true,
-        is_admin : true
-      }
     },
     {
       path: '/admin/approveinstitute',
