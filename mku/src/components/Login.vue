@@ -100,6 +100,7 @@ export default {
                 this.id = response.data;
                 localStorage.setItem('collegeId', this.id);
                 localStorage.setItem('status','verified');
+                localStorage.removeItem('collegeName');
                 this.$router.push({name:'College'});
                 this.login.userName = "";
                 this.login.password = "";
@@ -121,6 +122,7 @@ export default {
                 this.id = response.data;
                 localStorage.setItem('studentId', this.id);
                 localStorage.setItem('status','verified');
+                localStorage.removeItem('studentName');
                 this.$router.push({name:'Student'});
                 this.login.userName = "";
                 this.login.password = "";

@@ -54,7 +54,7 @@ export default {
         }
     },
     mounted(){
-      this.logout();
+      this.verified();
     },
     methods: {
       putRequest: function(){
@@ -72,7 +72,7 @@ export default {
           });
         });
       },
-      logout : function(){
+      verified : function(){
           localStorage.setItem('status','unverified')
       }
   }

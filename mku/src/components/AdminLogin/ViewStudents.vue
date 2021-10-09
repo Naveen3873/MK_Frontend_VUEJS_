@@ -123,6 +123,7 @@ export default {
     },
     mounted(){
         this.getAllStudents();
+        verified();
     },
     methods: {
         getAllStudents: function(){
@@ -180,7 +181,7 @@ export default {
                 });
             });
         },
-        logout : function(){
+        verified : function(){
             localStorage.setItem('status','unverified')
         }
     }

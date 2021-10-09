@@ -100,7 +100,7 @@ export default {
         }
     },
     mounted() {
-        this.logout();
+        this.verified();
     },
     methods: {
         insertFaculty: function(){
@@ -118,7 +118,7 @@ export default {
                 });
             });
         },
-        logout : function(){
+        verified : function(){
             localStorage.setItem('status','unverified')
         }
     }

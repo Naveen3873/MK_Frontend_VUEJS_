@@ -14,7 +14,7 @@
                 <b-navbar-nav class="ms-auto">
 
                     <!-- admin dropdown -->
-                    <b-dropdown text="Admin" variant="primary" class="m-2">
+                    <b-dropdown text="Admin" variant="primary" class="m-2">Naveen
                         <b-dropdown-item><router-link to="/admin/approveinstitute">Approve Colleges</router-link></b-dropdown-item>
                         <b-dropdown-item><router-link to="/admin/managecolleges">Manage Colleges</router-link></b-dropdown-item>
                         <b-dropdown-item><router-link to="/admin/viewstudents">View Students</router-link></b-dropdown-item>

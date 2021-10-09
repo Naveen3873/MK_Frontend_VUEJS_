@@ -29,7 +29,7 @@ export default {
     methods:{
         logout : function(){
             localStorage.setItem('status','unverified')
-            }
+        }
     }
 }
 </script>

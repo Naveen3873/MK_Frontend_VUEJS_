@@ -23,10 +23,10 @@ export default {
         SubHeader
     },
     mounted(){
-        this.logout();
+        this.verified();
     },
     methods:{
-        logout : function(){
+        verified : function(){
             localStorage.setItem('status','unverified')
         }
     }

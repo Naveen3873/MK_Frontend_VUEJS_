@@ -21,15 +21,14 @@ export default {
         Footer,
         Home,
         SubHeader
+
     },
     mounted(){
-        this.logout();
+        this.verified();
     },
     methods:{
-        logout : function(){
-            // localStorage.setItem('status','unverified')
-            console.log(localStorage.getItem('collegeId'));
-            console.log(localStorage.getItem('studentId'));
+        verified : function(){
+            localStorage.setItem('status','unverified')
         }
     }
 }
