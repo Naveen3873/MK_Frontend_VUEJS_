@@ -11,6 +11,9 @@ import ViewStudents from '../components/AdminLogin/ViewStudents.vue'
 import College from '../components/CollegeLogin/College'
 import FacultyManagement from '../components/CollegeLogin/FacultyManagement'
 
+import Student from '../components/StudentLogin/Student'
+import SendRequest from '../components/StudentLogin/SendRequest'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,28 +31,45 @@ const routes = [
     {
       path: '/admin/approveinstitute',
       name: 'ApproveInstitue',
-      component: ApproveInstitue
+      component: ApproveInstitue,
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/managecolleges',
       name: 'ManageColleges',
-      component: ManageColleges
+      component: ManageColleges,
+      meta: { requiresAuth: true }
     },
     {
       path: '/admin/viewstudents',
       name: 'ViewStudents',
-      component: ViewStudents
+      component: ViewStudents,
+      meta: { requiresAuth: true }
     },
     {
       path: '/college',
       name: 'College',
       component: College,
+      meta: { requiresAuth: true }
     },
     {
       path: '/college/facultymanagement',
       name: 'FacultyManagement',
-      component: FacultyManagement
-    }
+      component: FacultyManagement,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/student',
+      name: 'Student',
+      component: Student,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/student/sendrequest',
+      name: 'SendRequest',
+      component: SendRequest,
+      meta: { requiresAuth: true }
+    },
 ];
 
 const router = new VueRouter({
@@ -58,18 +78,17 @@ const router = new VueRouter({
   linkActiveClass: 'active',
 });
 router.beforeEach((to,from,next)=>{
-      if(to.meta.requiresAuth){
-              if(localStorage.getItem('status')=='verified')
-              {
-                     next();
-              }
-              else{
-                      router.push({name:'HomePage'})
-              }
-      }
-      else{
-              next();
-      }
+  if(to.meta.requiresAuth) {
+    if(localStorage.getItem('status')=='verified') {
+      next();
+    }
+    else {
+      router.push({name:'HomePage'})
+    }
+  }
+  else {
+    next();
+}
 
 })
 

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <college-header />
+    <student-header />
     <sub-header />
     <home />
     <Footer />
@@ -8,18 +8,18 @@
 </template>
 
 <script>
+/* eslint-disable */
+import StudentHeader from './StudentHeader.vue'
 import Footer from '../Footer.vue'
 import Home from '../Home.vue'
 import SubHeader from '../SubHeader.vue'
-/*eslint-disable */
 
-import CollegeHeader from './CollegeHeader.vue'
 export default {
-    name: 'College',
-    components:{
-        CollegeHeader,
-        Footer,
+    name: 'Student',
+    components: {
+        StudentHeader,
         Home,
+        Footer,
         SubHeader
     },
     mounted(){
@@ -27,9 +27,7 @@ export default {
     },
     methods:{
         logout : function(){
-            // localStorage.setItem('status','unverified')
-            console.log(localStorage.getItem('collegeId'));
-            console.log(localStorage.getItem('studentId'));
+            localStorage.setItem('status','unverified')
         }
     }
 }

@@ -23,5 +23,13 @@ export default {
         Footer,
         SubHeader
     },
+    mounted(){
+        this.logout();
+    },
+    methods:{
+        logout : function(){
+            localStorage.setItem('status','unverified')
+            }
+    }
 }
 </script>

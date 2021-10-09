@@ -50,6 +50,7 @@ export default {
         userName: '',
         password: ''
       },
+      id: '',
       selected: '1'
     }
   },
@@ -77,15 +78,16 @@ export default {
             .post("/admin/user", this.login, config)
             .then((response) => {
                 alert("login successfully");
-                localStorage.setItem('name', this.login.userName)
-                localStorage.setItem('status','verified')
-                this.$router.push({name:'admin'})
+                this.id = response.data;
+                localStorage.setItem('adminId', this.id);
+                localStorage.setItem('status','verified');
+                this.$router.push({name:'Admin'});
                 this.login.userName = "";
                 this.login.password = "";
                 resolve(response);
             }).catch((err) => {
                 alert("login failed");
-                localStorage.setItem('status','unverified')
+                localStorage.setItem('status','unverified');
                 reject(err);
             });
         });
@@ -95,13 +97,17 @@ export default {
             axi
             .post("/college/user", this.login, config)
             .then((response) => {
-                alert("login successfully");
+                this.id = response.data;
+                localStorage.setItem('collegeId', this.id);
+                localStorage.setItem('status','verified');
+                this.$router.push({name:'College'});
                 this.login.userName = "";
                 this.login.password = "";
-                window.location.replace("/college");
+                alert("login successfully");
                 resolve(response);
             }).catch((err) => {
                 alert("login failed");
+                localStorage.setItem('status','unverified');
                 reject(err);
             });
         });
@@ -112,12 +118,16 @@ export default {
             .post("/student/user", this.login, config)
             .then((response) => {
                 alert("login successfully");
+                this.id = response.data;
+                localStorage.setItem('studentId', this.id);
+                localStorage.setItem('status','verified');
+                this.$router.push({name:'Student'});
                 this.login.userName = "";
                 this.login.password = "";
-                window.location.replace("/student");
                 resolve(response);
             }).catch((err) => {
                 alert("login failed");
+                localStorage.setItem('status','unverified')
                 reject(err);
             });
         });

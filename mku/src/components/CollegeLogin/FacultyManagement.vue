@@ -99,6 +99,9 @@ export default {
             }
         }
     },
+    mounted() {
+        this.logout();
+    },
     methods: {
         insertFaculty: function(){
             return new Promise((resolve, reject) => {
@@ -114,6 +117,9 @@ export default {
                     reject(err);
                 });
             });
+        },
+        logout : function(){
+            localStorage.setItem('status','unverified')
         }
     }
 }

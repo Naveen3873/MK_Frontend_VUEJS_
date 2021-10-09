@@ -55,6 +55,7 @@ export default {
     },
     mounted(){
         this.getAllColleges();
+        this.logout();
     },
     methods: {
         getAllColleges: function(){
@@ -68,6 +69,9 @@ export default {
                 });
             });
         },
+        logout : function(){
+            localStorage.setItem('status','unverified')
+        }
     }
 }
 </script>

@@ -179,6 +179,9 @@ export default {
                     reject(err);
                 });
             });
+        },
+        logout : function(){
+            localStorage.setItem('status','unverified')
         }
     }
 }
