@@ -85,5 +85,26 @@ export default{
                     reject(err);
                 });
         });
+    },
+    putResponse: function(responses){
+        var seres = axios.create({
+            baseURL: "http://localhost:9090",
+        });
+        let config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        return new Promise((resolve, reject) => {
+            seres
+                .post("/college/response", responses, config)
+                .then(response => {
+                    resolve(response);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+        });
     }
+
 }

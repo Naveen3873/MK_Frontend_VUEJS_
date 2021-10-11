@@ -16,7 +16,8 @@
                     <!-- college dropdown -->
                     <b-dropdown text="College" variant="primary" class="m-2">
                         <b-dropdown-item><router-link to="/college/facultymanagement">Faculty Management</router-link></b-dropdown-item>
-                        <b-dropdown-item variant="primary" v-b-modal.updateCollege>Update College</b-dropdown-item>
+                        <b-dropdown-item v-b-modal.updateCollege>Update College</b-dropdown-item>
+                        <b-dropdown-item><router-link to="/college/sendresponse">Send response</router-link></b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item id="logout"><router-link to="/">Logout</router-link></b-dropdown-item>
                     </b-dropdown>
@@ -27,34 +28,34 @@
                                         <div class="form-row">
                                             <div class="form-group mb-2">
                                                 <label>College Name</label>
-                                                <b-form-input type="text" class="form-control" v-model="colleges.collegeName" placeholder="Enter your college name"></b-form-input>
+                                                <b-form-input type="text" class="form-control" v-model="college.collegeName" placeholder="Enter your college name"></b-form-input>
                                             </div>
 
                                             <div class="form-group mb-2">
                                                 <label>User Name</label>
-                                                <b-form-input type="text" class="form-control" v-model="colleges.userName" placeholder="Enter your username"></b-form-input>
+                                                <b-form-input type="text" class="form-control" v-model="college.userName" placeholder="Enter your username"></b-form-input>
                                             </div>
 
                                             <div class="form-group mb-2">
                                                 <label>Email</label>
-                                                <b-form-input type="email" class="form-control" v-model="colleges.email" placeholder="Enter your email"></b-form-input>
+                                                <b-form-input type="email" class="form-control" v-model="college.email" placeholder="Enter your email"></b-form-input>
                                             </div>
 
                                             <div class="form-group mb-2">
                                                 <label>Phone Number</label>
-                                                <b-form-input type="number" class="form-control" v-model="colleges.phoneNumber" placeholder="Enter your phone number"></b-form-input>
+                                                <b-form-input type="number" class="form-control" v-model="college.phoneNumber" placeholder="Enter your phone number"></b-form-input>
                                             </div>
 
                                             <div class="form-group mb-2">
                                                 <label>Password</label>
-                                                <b-form-input type="password" class="form-control" v-model="colleges.password" placeholder="Enter your password"></b-form-input>
+                                                <b-form-input type="password" class="form-control" v-model="college.password" placeholder="Enter your password"></b-form-input>
                                             </div>
 
                                             <div class="form-group mb-2">
                                                 <label>College Address</label>
                                                     <b-form-textarea
                                                         id="textarea"
-                                                        v-model="colleges.collegeAddress"
+                                                        v-model="college.collegeAddress"
                                                         placeholder="Enter your address"
                                                         rows="3"
                                                         max-rows="6">
@@ -80,39 +81,29 @@ export default {
     name: 'CollegeHeader',
     data() {
         return{
-            // updateCollege:{
-            //     id:'',
-            //     collegeName: '',
-            //     userName: '',
-            //     email: '',
-            //     phoneNumber: '',
-            //     password: '',
-            //     collegeAddress: ''
-            // },
-            colleges: ''
+            college:{
+                id: '',
+                collegeName: '',
+                userName: '',
+                email: '',
+                phoneNumber: '',
+                password: '',
+                collegeAddress: ''
+            },
+            // colleges: ''
+            id: ''
         }
     },
     mounted(){
-        this.getAllColleges();
-        this.logout();
+        this.verified();
+        this.getCollege(id);
     },
     methods: {
-        getAllColleges: function(){
-            return new Promise((resolve, reject) => {
-                CollegeService.getAllColleges()
-                .then((response) => {
-                    this.colleges = response.data;
-                    resolve(response);
-                }).catch((err) => {
-                    reject(err);
-                });
-            });
-        },
         getCollege: function(id){
             return new Promise((resolve, reject) => {
                 CollegeService.getCollege(id)
                 .then((response) => {
-                    console.log("College is ", response.data)
+                    console.log("College is ", response.data);
                     this.college = response.data;
                     resolve(response);
                 }).catch((err) => {
@@ -120,8 +111,11 @@ export default {
                 });
             });
         },
-        logout : function(){
-            localStorage.setItem('status','verified')
+        verified : function(){
+            localStorage.setItem('status','clgverified');
+            console.log(localStorage.getItem('collegeId'));
+            var id = localStorage.getItem('collegeId');
+            alert(id);
         }
     }
 }

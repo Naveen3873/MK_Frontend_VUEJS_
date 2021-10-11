@@ -80,7 +80,7 @@ export default {
                 alert("login successfully");
                 this.id = response.data;
                 localStorage.setItem('adminId', this.id);
-                localStorage.setItem('status','verified');
+                localStorage.setItem('status','admverified');
                 this.$router.push({name:'Admin'});
                 this.login.userName = "";
                 this.login.password = "";
@@ -99,7 +99,7 @@ export default {
             .then((response) => {
                 this.id = response.data;
                 localStorage.setItem('collegeId', this.id);
-                localStorage.setItem('status','verified');
+                localStorage.setItem('status','clgverified');
                 localStorage.removeItem('collegeName');
                 this.$router.push({name:'College'});
                 this.login.userName = "";

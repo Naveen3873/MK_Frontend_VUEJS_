@@ -10,6 +10,7 @@ import ViewStudents from '../components/AdminLogin/ViewStudents'
 
 import College from '../components/CollegeLogin/College'
 import FacultyManagement from '../components/CollegeLogin/FacultyManagement'
+import SendResponse from '../components/CollegeLogin/SendResponse'
 
 import Student from '../components/StudentLogin/Student'
 import SendRequest from '../components/StudentLogin/SendRequest'
@@ -55,7 +56,14 @@ const routes = [
     {
       path: '/college/facultymanagement',
       name: 'FacultyManagement',
-      component: FacultyManagement
+      component: FacultyManagement,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/college/sendresponse',
+      name: 'SendResponse',
+      component: SendResponse,
+      meta: { requiresAuth: true }
     },
     {
       path: '/student',
@@ -66,7 +74,8 @@ const routes = [
     {
       path: '/student/sendrequest',
       name: 'SendRequest',
-      component: SendRequest
+      component: SendRequest,
+      meta: { requiresAuth: true }
     },
 ];
 
@@ -77,8 +86,21 @@ const router = new VueRouter({
 });
 router.beforeEach((to,from,next)=>{
   if(to.meta.requiresAuth) {
-    if(localStorage.getItem('status')=='verified') {
-      next();
+    if(localStorage.getItem('status')=='admverified') {
+      if(localStorage.getItem('status')=='admverified') {
+        next();
+      }
+      else{
+        router.push({name:'HomePage'})
+      }
+    }
+    if(localStorage.getItem('status')=='clgverified') {
+      if(localStorage.getItem('status')=='clgverified') {
+        next();
+      }
+      else{
+        router.push({name:'HomePage'})
+      }
     }
     else {
       router.push({name:'HomePage'})

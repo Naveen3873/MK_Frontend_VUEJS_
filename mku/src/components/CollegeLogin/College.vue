@@ -28,7 +28,7 @@ export default {
     },
     methods:{
         verified : function(){
-            localStorage.setItem('status','verified')
+            localStorage.setItem('status','clgverified')
         }
     }
 }

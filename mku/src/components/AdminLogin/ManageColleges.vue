@@ -29,56 +29,56 @@
                         <td>{{ c.collegeAddress }}</td>
                         <td>
                             <!-- College edit and update start-->
-                            <b-icon @click="getCollege(c.id)" icon="pencil-fill" v-b-modal.model-5 aria-hidden="true"></b-icon>
-                                <b-modal id="model-5" title="College Edit" hide-footer>
-                                    <div>
-                                        <div class="form-row">
-                                            <div class="form-group mb-2">
-                                                <label>College Name</label>
-                                                <b-form-input type="text" class="form-control" v-model="college.collegeName" placeholder="Enter your college name"></b-form-input>
-                                            </div>
-
-                                            <div class="form-group mb-2">
-                                                <label>User Name</label>
-                                                <b-form-input type="text" class="form-control" v-model="college.userName" placeholder="Enter your username"></b-form-input>
-                                            </div>
-
-                                            <div class="form-group mb-2">
-                                                <label>Email</label>
-                                                <b-form-input type="email" class="form-control" v-model="college.email" placeholder="Enter your email"></b-form-input>
-                                            </div>
-
-                                            <div class="form-group mb-2">
-                                                <label>Phone Number</label>
-                                                <b-form-input type="number" class="form-control" v-model="college.phoneNumber" placeholder="Enter your phone number"></b-form-input>
-                                            </div>
-
-                                            <div class="form-group mb-2">
-                                                <label>Password</label>
-                                                <b-form-input type="password" class="form-control" v-model="college.password" placeholder="Enter your password"></b-form-input>
-                                            </div>
-
-                                            <div class="form-group mb-2">
-                                                <label>College Address</label>
-                                                    <b-form-textarea
-                                                        id="textarea"
-                                                        placeholder="Enter your address"
-                                                        v-model="college.collegeAddress"
-                                                        rows="3"
-                                                        max-rows="6">
-                                                    </b-form-textarea>
-                                            </div>
-                                            <b-button type="submit" variant="primary" @click="updateCollege()" class="float-end mt-3">update</b-button>
-                                        </div>
-                                    </div>
-                                </b-modal>
+                            <b-icon @click="getCollege(c.id)" icon="pencil-fill" v-b-modal.editCollege></b-icon>
                             <!-- College edit and update end-->
                             <span>|</span>
-                            <span><b-icon icon="trash-fill" @click="deleteCollege(id)" aria-hidden="true"></b-icon></span>
+                            <span><b-icon icon="trash-fill" @click="deleteCollege(c.id)" aria-hidden="true"></b-icon></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <b-modal id="editCollege" title="College Edit" hide-footer>
+                <div>
+                    <div class="form-row">
+                        <div class="form-group mb-2">
+                            <label>College Name</label>
+                            <b-form-input type="text" class="form-control" v-model="college.collegeName" placeholder="Enter your college name"></b-form-input>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>User Name</label>
+                            <b-form-input type="text" class="form-control" v-model="college.userName" placeholder="Enter your username"></b-form-input>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>Email</label>
+                            <b-form-input type="email" class="form-control" v-model="college.email" placeholder="Enter your email"></b-form-input>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>Phone Number</label>
+                            <b-form-input type="number" class="form-control" v-model="college.phoneNumber" placeholder="Enter your phone number"></b-form-input>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>Password</label>
+                            <b-form-input type="password" class="form-control" v-model="college.password" placeholder="Enter your password"></b-form-input>
+                        </div>
+
+                        <div class="form-group mb-2">
+                            <label>College Address</label>
+                                <b-form-textarea
+                                    id="textarea"
+                                    placeholder="Enter your address"
+                                    v-model="college.collegeAddress"
+                                    rows="3"
+                                    max-rows="6">
+                                </b-form-textarea>
+                        </div>
+                        <b-button type="submit" variant="primary" @click="updateCollege()" class="float-end mt-3">update</b-button>
+                    </div>
+                </div>
+            </b-modal>
         </div>
     </b-container>
 <Footer />
@@ -174,7 +174,7 @@ export default {
             });
         },
         verified : function(){
-            localStorage.setItem('status','verified')
+            localStorage.setItem('status','admverified')
         }
     }
 }

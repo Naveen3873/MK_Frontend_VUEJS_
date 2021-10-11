@@ -23,12 +23,11 @@ export default {
         SubHeader
     },
     mounted(){
-        this.logout();
+        this.verified();
     },
     methods:{
-        logout : function(){
-            localStorage.setItem('status','verified');
-            console.log(localStorage.getItem('adminId'));
+        verified : function(){
+            localStorage.setItem('status','admverified');
         }
     }
 }
