@@ -10,10 +10,6 @@ import ViewStudents from '../components/AdminLogin/ViewStudents'
 
 import College from '../components/CollegeLogin/College'
 import FacultyManagement from '../components/CollegeLogin/FacultyManagement'
-// import UpdateCollege from '../components/CollegeLogin/UpdateCollege'
-
-import College from '../components/CollegeLogin/College'
-import FacultyManagement from '../components/CollegeLogin/FacultyManagement'
 
 import Student from '../components/StudentLogin/Student'
 import SendRequest from '../components/StudentLogin/SendRequest'
@@ -30,10 +26,7 @@ const routes = [
       path: '/admin',
       name: 'Admin',
       component: Admin,
-<<<<<<< HEAD
       meta: { requiresAuth: true }
-=======
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     },
     {
       path: '/admin/approveinstitute',
@@ -50,29 +43,19 @@ const routes = [
     {
       path: '/admin/viewstudents',
       name: 'ViewStudents',
-<<<<<<< HEAD
       component: ViewStudents,
       meta: { requiresAuth: true }
-=======
-      component: ViewStudents
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     },
     {
       path: '/college',
       name: 'College',
-<<<<<<< HEAD
       component: College,
       meta: { requiresAuth: true }
-=======
-      component: College
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     },
     {
       path: '/college/facultymanagement',
       name: 'FacultyManagement',
-<<<<<<< HEAD
-      component: FacultyManagement,
-      meta: { requiresAuth: true }
+      component: FacultyManagement
     },
     {
       path: '/student',
@@ -83,8 +66,7 @@ const routes = [
     {
       path: '/student/sendrequest',
       name: 'SendRequest',
-      component: SendRequest,
-      meta: { requiresAuth: true }
+      component: SendRequest
     },
 ];
 
@@ -109,47 +91,3 @@ router.beforeEach((to,from,next)=>{
 })
 
 export default router;
-=======
-      component: FacultyManagement
-    },
-    // {
-    //   path: '/college/updatecollege',
-    //   name: 'UpdateCollege',
-    //   component: UpdateCollege
-    // },
-  ],
-  mode: 'history'
-})
-
-// Meta Handling
-
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next({
-//         path: '/',
-//         params: { nextUrl: to.fullPath }
-//       })
-//     } else {
-//       let user = JSON.parse(localStorage.getItem('user'))
-//       if (to.matched.some(record => record.meta.is_admin)) {
-//         if (user.is_admin == 1) {
-//           next()
-//         } else {
-//           next({ name: 'userboard' })
-//         }
-//       } else {
-//         next()
-//       }
-//     }
-//   } else if (to.matched.some(record => record.meta.guest)) {
-//     if (localStorage.getItem('jwt') == null) {
-//       next()
-//     } else {
-//       next({ name: 'userboard' })
-//     }
-//   } else {
-//     next()
-//   }
-// })
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1

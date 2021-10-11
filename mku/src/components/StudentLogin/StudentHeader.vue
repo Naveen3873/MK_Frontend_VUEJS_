@@ -93,6 +93,14 @@ export default {
                 studentAddress: '',
             }
         }
+    },
+    mounted(){
+        this.logout();
+    },
+    methods:{
+        logout : function(){
+            localStorage.setItem('status','verified')
+        }
     }
 }
 </script>

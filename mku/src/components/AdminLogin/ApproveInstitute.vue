@@ -70,7 +70,7 @@ export default {
             });
         },
         verified : function(){
-            localStorage.setItem('status','unverified')
+            localStorage.setItem('status','verified')
         }
     }
 }

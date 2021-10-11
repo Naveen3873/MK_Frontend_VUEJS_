@@ -22,17 +22,11 @@
     "sqlite3": "^5.0.2",
     "vue": "^2.6.14",
     "vue-axios": "^3.3.7",
-<<<<<<< HEAD
+    "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.7.4",
     "vue-localstorage": "^0.6.2",
     "vue-router": "^3.5.2",
     "vuelidate": "^0.7.6"
-=======
-    "vue-cookie": "^1.1.4",
-    "vue-router": "^4.0.11",
-    "vuelidate": "^0.7.6",
-    "vuex": "^4.0.2"
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
   },
   "devDependencies": {
     "@vue/devtools": "^5.3.4",

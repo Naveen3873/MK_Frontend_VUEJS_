@@ -9,7 +9,6 @@
 
 <script>
 /* eslint-disable */
-
 import AdminHeader from './AdminHeader.vue'
 import Home from '../Home.vue'
 import Footer from '../Footer.vue'
@@ -22,17 +21,15 @@ export default {
         Home,
         Footer,
         SubHeader
-<<<<<<< HEAD
     },
     mounted(){
         this.logout();
     },
     methods:{
         logout : function(){
-            localStorage.setItem('status','unverified')
+            localStorage.setItem('status','verified');
+            console.log(localStorage.getItem('adminId'));
         }
-=======
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     }
 }
 </script>

@@ -1,16 +1,9 @@
 <template>
 <div>
-<<<<<<< HEAD
     <college-header />
     <sub-header />
     <home />
     <Footer />
-=======
-<college-header />
-<sub-header />
-<home />
-<Footer />
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
 </div>
 </template>
 
@@ -29,17 +22,14 @@ export default {
         Home,
         SubHeader
 
-<<<<<<< HEAD
     },
     mounted(){
         this.verified();
     },
     methods:{
         verified : function(){
-            localStorage.setItem('status','unverified')
+            localStorage.setItem('status','verified')
         }
-=======
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     }
 }
 </script>

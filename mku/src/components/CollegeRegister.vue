@@ -93,7 +93,7 @@ export default {
                 password: '',
                 collegeAddress: ''
             },
-            confirmPassword: '',
+            // confirmPassword: '',
             showpassword: false,
             submitstatus: null
         }

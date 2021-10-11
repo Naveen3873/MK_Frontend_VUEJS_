@@ -94,6 +94,7 @@ export default {
     },
     mounted(){
         this.getAllColleges();
+        this.logout();
     },
     methods: {
         getAllColleges: function(){
@@ -118,11 +119,10 @@ export default {
                     reject(err);
                 });
             });
-<<<<<<< HEAD
-        }
-=======
         },
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
+        logout : function(){
+            localStorage.setItem('status','verified')
+        }
     }
 }
 </script>

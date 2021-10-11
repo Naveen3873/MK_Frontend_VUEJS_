@@ -28,13 +28,10 @@ Vue.use(VueLocalStorage)
 Vue.use(VueRouter)
 
 
-<<<<<<< HEAD
-=======
 var VueCookie = require('vue-cookie');
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
 
->>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
 new Vue({
   render: h => h(App),
   router
