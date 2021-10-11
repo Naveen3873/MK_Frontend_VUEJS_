@@ -99,9 +99,12 @@ export default {
             }
         }
     },
+<<<<<<< HEAD
     mounted() {
         this.verified();
     },
+=======
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     methods: {
         insertFaculty: function(){
             return new Promise((resolve, reject) => {
@@ -117,9 +120,12 @@ export default {
                     reject(err);
                 });
             });
+<<<<<<< HEAD
         },
         verified : function(){
             localStorage.setItem('status','unverified')
+=======
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
         }
     }
 }

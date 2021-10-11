@@ -13,17 +13,29 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.18.0",
     "axios": "^0.22.0",
+    "bcrypt": "^5.0.1",
     "bootstrap": "^5.1.1",
     "bootstrap-vue": "^2.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "sqlite3": "^5.0.2",
     "vue": "^2.6.14",
     "vue-axios": "^3.3.7",
+<<<<<<< HEAD
     "vue-cookies": "^1.7.4",
     "vue-localstorage": "^0.6.2",
     "vue-router": "^3.5.2",
     "vuelidate": "^0.7.6"
+=======
+    "vue-cookie": "^1.1.4",
+    "vue-router": "^4.0.11",
+    "vuelidate": "^0.7.6",
+    "vuex": "^4.0.2"
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
   },
   "devDependencies": {
+    "@vue/devtools": "^5.3.4",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",

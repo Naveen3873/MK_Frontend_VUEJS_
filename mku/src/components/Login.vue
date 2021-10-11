@@ -50,7 +50,10 @@ export default {
         userName: '',
         password: ''
       },
+<<<<<<< HEAD
       id: '',
+=======
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
       selected: '1'
     }
   },
@@ -78,6 +81,7 @@ export default {
             .post("/admin/user", this.login, config)
             .then((response) => {
                 alert("login successfully");
+<<<<<<< HEAD
                 this.id = response.data;
                 localStorage.setItem('adminId', this.id);
                 localStorage.setItem('status','verified');
@@ -88,6 +92,15 @@ export default {
             }).catch((err) => {
                 alert("login failed");
                 localStorage.setItem('status','unverified');
+=======
+                this.login.userName = "";
+                this.login.password = "";
+                this.$router.push('admin')
+                // window.location.replace("/admin");
+                resolve(response);
+            }).catch((err) => {
+                alert("login failed");
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
                 reject(err);
             });
         });
@@ -97,6 +110,7 @@ export default {
             axi
             .post("/college/user", this.login, config)
             .then((response) => {
+<<<<<<< HEAD
                 this.id = response.data;
                 localStorage.setItem('collegeId', this.id);
                 localStorage.setItem('status','verified');
@@ -109,6 +123,15 @@ export default {
             }).catch((err) => {
                 alert("login failed");
                 localStorage.setItem('status','unverified');
+=======
+                alert("login successfully");
+                this.login.userName = "";
+                this.login.password = "";
+                window.location.replace("/college");
+                resolve(response);
+            }).catch((err) => {
+                alert("login failed");
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
                 reject(err);
             });
         });
@@ -119,6 +142,7 @@ export default {
             .post("/student/user", this.login, config)
             .then((response) => {
                 alert("login successfully");
+<<<<<<< HEAD
                 this.id = response.data;
                 localStorage.setItem('studentId', this.id);
                 localStorage.setItem('status','verified');
@@ -130,10 +154,22 @@ export default {
             }).catch((err) => {
                 alert("login failed");
                 localStorage.setItem('status','unverified')
+=======
+                this.login.userName = "";
+                this.login.password = "";
+                window.location.replace("/student");
+                resolve(response);
+            }).catch((err) => {
+                alert("login failed");
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
                 reject(err);
             });
         });
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     }
   }
 }

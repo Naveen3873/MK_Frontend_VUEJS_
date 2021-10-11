@@ -85,6 +85,7 @@ export default{
                     reject(err);
                 });
         });
+<<<<<<< HEAD
     },
     putRequest: function(request){
         var ax = axios.create({
@@ -105,5 +106,7 @@ export default{
                     reject(err);
                 });
         });
+=======
+>>>>>>> d751150c819c972f2fd3d961ce5b8c9c3d5eede1
     }
 }
