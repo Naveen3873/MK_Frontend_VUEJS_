@@ -115,7 +115,6 @@ export default {
     },
     mounted(){
         this.getAllColleges();
-        this.verified();
     },
     methods: {
         getAllColleges: function(){
@@ -174,7 +173,10 @@ export default {
             });
         },
         verified : function(){
-            localStorage.setItem('status','admverified')
+            // localStorage.setItem('status','unverified');
+        },
+        loggedIn : function(){
+            localStorage.setItem('status','verified');
         }
     }
 }

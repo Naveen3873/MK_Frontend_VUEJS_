@@ -16,7 +16,7 @@
                     <!-- college dropdown -->
                     <b-dropdown text="College" variant="primary" class="m-2">
                         <b-dropdown-item><router-link to="/college/facultymanagement">Faculty Management</router-link></b-dropdown-item>
-                        <b-dropdown-item v-b-modal.updateCollege>Update College</b-dropdown-item>
+                        <b-dropdown-item @click="getId()" v-b-modal.updateCollege>Update College</b-dropdown-item>
                         <b-dropdown-item><router-link to="/college/sendresponse">Send response</router-link></b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item id="logout"><router-link to="/">Logout</router-link></b-dropdown-item>
@@ -61,7 +61,7 @@
                                                         max-rows="6">
                                                     </b-form-textarea>
                                             </div>
-                                            <b-button type="submit" variant="primary" class="float-end mt-3">update</b-button>
+                                            <b-button type="submit" variant="primary" class="float-end mt-3" @click="updateCollege()">update</b-button>
                                         </div>
                                     </div>
                                 </b-modal>
@@ -90,15 +90,14 @@ export default {
                 password: '',
                 collegeAddress: ''
             },
-            // colleges: ''
             id: ''
         }
     },
-    mounted(){
-        this.verified();
-        this.getCollege(id);
-    },
     methods: {
+        getId : function(){
+            var id = localStorage.getItem('collegeId')
+            this.getCollege(id);
+        },
         getCollege: function(id){
             return new Promise((resolve, reject) => {
                 CollegeService.getCollege(id)
@@ -111,12 +110,25 @@ export default {
                 });
             });
         },
-        verified : function(){
-            localStorage.setItem('status','clgverified');
-            console.log(localStorage.getItem('collegeId'));
-            var id = localStorage.getItem('collegeId');
-            alert(id);
-        }
+        updateCollege: function(){
+            return new Promise((resolve, reject) => {
+                CollegeService.updateCollege(this.college)
+                .then(response => {
+                    alert(response.data);
+                    this.college.id = '',
+                    this.college.collegeName =  '',
+                    this.college.userName =  '',
+                    this.college.email = '',
+                    this.college.phoneNumber = '',
+                    this.college.password = '',
+                    this.college.collegeAddress = ''
+                    resolve(response);
+                })
+                .catch(err => {
+                    reject(err);
+                });
+            });
+        },
     }
 }
 </script>

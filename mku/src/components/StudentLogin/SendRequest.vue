@@ -43,38 +43,32 @@ import SubHeader from '../SubHeader.vue';
 import StudentService from '../../service/StudentService'
 import StudentHeader from './StudentHeader.vue';
 export default {
-    components: { SubHeader, Footer, StudentHeader },
-    name: "SendRequest",
-    data() {
-        return {
-            request: {
-                studentName: "",
-                message: ""
-            },
-        }
-    },
-    mounted(){
-      this.verified();
-    },
-    methods: {
-      putRequest: function(){
-        return new Promise((resolve, reject) => {
-          StudentService.putRequest(this.request)
-          .then(response => {
-            alert ("Request submitted");
-                this.request.studentName="";
-                this.request.message="";
-                window.location.reload();
-                resolve(response);
-          })
-          .catch(err => {
-            reject(err);
-          });
-        });
-      },
-      verified : function(){
-          localStorage.setItem('status','verified')
+  components: { SubHeader, Footer, StudentHeader },
+  name: "SendRequest",
+  data() {
+      return {
+          request: {
+              studentName: "",
+              message: ""
+          },
       }
+  },
+  methods: {
+    putRequest: function(){
+      return new Promise((resolve, reject) => {
+        StudentService.putRequest(this.request)
+        .then(response => {
+          alert ("Request submitted");
+              this.request.studentName="";
+              this.request.message="";
+              window.location.reload();
+              resolve(response);
+        })
+        .catch(err => {
+          reject(err);
+        });
+      });
+    }
   }
 };
 </script>

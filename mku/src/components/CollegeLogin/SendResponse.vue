@@ -37,13 +37,7 @@ export default {
             }
         }
     },
-    mounted(){
-        this.verified();
-    },
     methods:{
-        verified : function() {
-            localStorage.setItem('status','clgverified');
-        },
         putResponse : function() {
             return new Promise((resolve, reject) => {
                 CollegeService.putResponse(this.responses)

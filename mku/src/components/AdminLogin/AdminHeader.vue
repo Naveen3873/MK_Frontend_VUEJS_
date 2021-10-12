@@ -53,14 +53,6 @@ export default {
     CollegeRegister,
     StudentRegister
   },
-    mounted(){
-        this.verified();
-    },
-    methods: {
-        verified : function(){
-            localStorage.setItem('status','admverified');
-        }
-    }
 }
 </script>
 

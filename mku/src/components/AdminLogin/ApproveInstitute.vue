@@ -55,7 +55,6 @@ export default {
     },
     mounted(){
         this.getAllColleges();
-        this.verified();
     },
     methods: {
         getAllColleges: function(){
@@ -69,9 +68,6 @@ export default {
                 });
             });
         },
-        verified : function(){
-            localStorage.setItem('status','admverified')
-        }
     }
 }
 </script>

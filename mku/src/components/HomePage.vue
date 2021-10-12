@@ -25,9 +25,13 @@ export default {
   mounted(){
     this.logout();
   },
-  methods:{
+  methods: {
     logout : function(){
-      localStorage.setItem('status','unverified')
+      localStorage.removeItem('status');
+      localStorage.removeItem('role');
+      localStorage.removeItem('adminId');
+      localStorage.removeItem('collegeId');
+      localStorage.removeItem('studentId')
     }
   }
 }

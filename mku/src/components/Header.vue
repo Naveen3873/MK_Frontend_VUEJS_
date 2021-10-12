@@ -41,6 +41,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import Login from '../components/Login.vue'
 import CollegeRegister from '../components/CollegeRegister.vue'
 import StudentRegister from '../components/StudentRegister.vue'

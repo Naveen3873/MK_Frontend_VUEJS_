@@ -7,7 +7,7 @@
         <b-row class="mt-4">
             <b-col cols="4">
                 <b-list-group>
-                    <b-button v-b-toggle.addFaculty>Add Faculty</b-button>
+                    <b-button v-b-toggle.addFaculty @click="getId()">Add Faculty</b-button>
                     <b-button v-b-toggle.facultyManagement>Faculty Management</b-button>
                 </b-list-group>
             </b-col>
@@ -16,6 +16,11 @@
                 <b-collapse id="addFaculty">
                     <h3 class="text-center">Add Faculty</h3>
                     <div class="form-row">
+                        <div class="form-group mb-2">
+                            <label>College</label>
+                            <b-form-input type="text" class="form-control" v-model="college.collegeName"></b-form-input>
+                        </div>
+
                         <div class="form-group mb-2">
                             <label>Faculty Name</label>
                             <b-form-input type="text" class="form-control" v-model="faculty.name" placeholder="Enter faculty name"></b-form-input>
@@ -85,6 +90,7 @@ import SacsCollegeService from '../../service/SacsCollegeService'
 import Footer from '../Footer.vue'
 import SubHeader from '../SubHeader.vue'
 import CollegeHeader from './CollegeHeader.vue'
+import CollegeService from '../../service/CollegeService'
 
 export default {
   components: { CollegeHeader, SubHeader, Footer },
@@ -95,15 +101,13 @@ export default {
                 name: '',
                 qualification: '',
                 experience: '',
-                skill: ''
-            }
+                skill: '',
+            },
+            college: ''
         }
     },
-    mounted() {
-        this.verified();
-    },
     methods: {
-        insertFaculty: function(){
+        insertFaculty : function(){
             return new Promise((resolve, reject) => {
                 SacsCollegeService.putFaculty(this.faculty)
                 .then((response) => {
@@ -118,9 +122,21 @@ export default {
                 });
             });
         },
-        verified : function(){
-            localStorage.setItem('status','clgverified')
-        }
+        getId : function() {
+            var id = localStorage.getItem('collegeId')
+            this.getCollege(id);
+        },
+        getCollege : function(id){
+            return new Promise((resolve, reject) => {
+                CollegeService.getCollege(id)
+                .then((response) => {
+                    this.college = response.data;
+                    resolve(response);
+                }).catch((err) => {
+                    reject(err);
+                });
+            });
+        },
     }
 }
 </script>

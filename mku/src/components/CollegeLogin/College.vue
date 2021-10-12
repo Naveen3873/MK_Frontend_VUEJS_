@@ -21,15 +21,6 @@ export default {
         Footer,
         Home,
         SubHeader
-
-    },
-    mounted(){
-        this.verified();
-    },
-    methods:{
-        verified : function(){
-            localStorage.setItem('status','clgverified')
-        }
     }
 }
 </script>

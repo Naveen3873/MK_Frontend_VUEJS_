@@ -63,6 +63,15 @@
 </div>
 </template>
 
+<script>
+/* eslint-disable */
+
+export default {
+  name: 'Footer'
+
+}
+</script>
+
 <style scoped>
 div #footer1 {
  margin-top: 20px;
