@@ -22,17 +22,17 @@ export default {
     Home,
     Footer
   },
-  mounted(){
-    this.logout();
-  },
-  methods: {
-    logout : function(){
-      localStorage.removeItem('status');
-      localStorage.removeItem('role');
-      localStorage.removeItem('adminId');
-      localStorage.removeItem('collegeId');
-      localStorage.removeItem('studentId')
-    }
-  }
+  // mounted(){
+  //   this.logout();
+  // },
+  // methods: {
+  //   logout : function(){
+  //     localStorage.removeItem('status');
+  //     localStorage.removeItem('role');
+  //     localStorage.removeItem('adminId');
+  //     localStorage.removeItem('collegeId');
+  //     localStorage.removeItem('studentId')
+  //   }
+  // }
 }
 </script>

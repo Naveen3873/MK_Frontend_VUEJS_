@@ -170,16 +170,8 @@ router.beforeEach((to,from,next)=>{
       router.push({ name : 'HomePage'})
     }
   }
-  // else if(to.meta.requiresAuth && to.meta.isStudent){
-  //   if(localStorage.getItem('status' == 'verified') && ('role' == 'Student')){
-  //     next();
-  //   }
-  //   else{
-  //     router.push({ name : 'HomePage'})
-  //   }
-  // }
-    else{
-      next();
-    }
+  else{
+    next();
+  }
 })
 export default router;

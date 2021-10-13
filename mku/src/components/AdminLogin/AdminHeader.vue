@@ -20,7 +20,7 @@
                         <b-dropdown-item><router-link to="/admin/viewstudents">View Students</router-link></b-dropdown-item>
                         <b-dropdown-item href="#" disabled>View Complaints</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
-                        <b-dropdown-item id="logout"><router-link to="/" @click="logout()">Logout</router-link></b-dropdown-item>
+                        <b-dropdown-item id="logout" @click="logout()"><router-link to="/">Logout</router-link></b-dropdown-item>
                     </b-dropdown>
 
                     <!-- Register Popup start -->
@@ -48,11 +48,21 @@ import CollegeRegister from '../CollegeRegister.vue'
 import StudentRegister from '../StudentRegister.vue'
 
 export default {
-  name: 'admin-header',
-  components: {
-    CollegeRegister,
-    StudentRegister
-  },
+    name: 'admin-header',
+    components: {
+        CollegeRegister,
+        StudentRegister
+    },
+    methods: {
+        logout : function(){
+            localStorage.removeItem('status');
+            localStorage.removeItem('role');
+            localStorage.removeItem('adminId');
+            localStorage.removeItem('collegeId');
+            localStorage.removeItem('studentId');
+            this.$router.push({ name: 'HomePage' });
+        }
+    }
 }
 </script>
 

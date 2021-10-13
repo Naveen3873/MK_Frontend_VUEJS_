@@ -19,7 +19,7 @@
                         <b-dropdown-item><router-link to="/student/sendresponse">Send response</router-link></b-dropdown-item>
                         <b-dropdown-item @click="getId()" v-b-modal.updateStudent>Update Student</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
-                        <b-dropdown-item id="logout"><router-link to="/">Logout</router-link></b-dropdown-item>
+                        <b-dropdown-item id="logout" @click="logout()"><router-link to="/">Logout</router-link></b-dropdown-item>
                     </b-dropdown>
                         <!-- update college popup start -->
                         <b-modal id="updateStudent" title="Student Edit" hide-footer>
@@ -132,6 +132,14 @@ export default {
                 });
             });
         },
+        logout : function(){
+            localStorage.removeItem('status');
+            localStorage.removeItem('role');
+            localStorage.removeItem('adminId');
+            localStorage.removeItem('collegeId');
+            localStorage.removeItem('studentId');
+            this.$router.push({ name: 'HomePage' });
+        }
     }
 }
 </script>
